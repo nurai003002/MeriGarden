@@ -5,6 +5,7 @@ from apps.contacts.models import Contacts,PageContact
 
 # Create your views here.
 def index(request):
+    video = models.Video.objects.latest('id')
     settings = models.Settings.objects.latest('id')
     slide = models.Slide.objects.all()
     condiction = Condition.objects.latest('id')

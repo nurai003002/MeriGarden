@@ -18,8 +18,13 @@ class SlideFilterAdmin(admin.ModelAdmin):
     list_filter = ('title', )
     list_display = ('title', )
     search_fields = ('title', )
+
+class VideoFilterAdmin(admin.ModelAdmin):
+    list_filter = ('title', )
+    list_display = ('title',)
+    search_fields = ('title',)
   
-    
+admin.site.register(models.Video, VideoFilterAdmin)
 admin.site.register(models.Slide,SlideFilterAdmin)
 admin.site.register(models.Settings, SettingsFilterAdmin)
 admin.site.unregister(User)

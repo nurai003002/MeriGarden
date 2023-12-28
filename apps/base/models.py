@@ -66,3 +66,29 @@ class Slide(models.Model):
     class Meta:
         verbose_name = 'Слайд на главной странице'
         verbose_name_plural = "Слайды на главной странице"
+
+class Video(models.Model):
+    image = ResizedImageField(
+        force_format="WEBP", 
+        quality=100, 
+        upload_to='video/',
+        verbose_name="Фотография для баннера",
+        blank = True, null = True
+    )
+    title = models.CharField(
+        max_length=255,
+        verbose_name="Название видео",
+        blank=True,null=True
+    )
+    url = models.URLField(
+        verbose_name="Ссылка на видео",
+        blank=True,null=True
+    )
+    
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+            verbose_name = "Видео о MerriGarden"
+            verbose_name_plural = "Видео о MerriGarden"
+            

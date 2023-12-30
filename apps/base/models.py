@@ -89,6 +89,20 @@ class Video(models.Model):
         return self.title
     
     class Meta:
-            verbose_name = "Видео о MerriGarden"
-            verbose_name_plural = "Видео о MerriGarden"
+        verbose_name = "Видео о MerriGarden"
+        verbose_name_plural = "Видео о MerriGarden"
+
+
+class Blog(models.Model):
+    title = models.CharField(
+        max_length = 255,
+        verbose_name = 'Название '
+    )
+    descriptions = models.TextField(
+        verbose_name = 'Описание'
+    )
+    
+    class Meta:
+        verbose_name = 'Блок'
+        verbose_name_plural = "Блоки"
             

@@ -10,10 +10,12 @@ class Contacts(models.Model):
         max_length = 255,
         verbose_name = 'Номер телефона'
     )
+
     data = models.CharField(
         max_length = 255,
         verbose_name = 'Дата'
     )
+   
 
     def __str__(self):
         return self.name

@@ -40,12 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
 
     #apps
-    'ckeditor',
     'apps.base',
     'apps.contacts',
-    'apps.secondary'
+    'apps.secondary',
+    'apps.telegram_bot'
 ]
 
 MIDDLEWARE = [
@@ -204,3 +205,8 @@ CKEDITOR_CONFIGS = {
     },
 }
 
+EMAIL_USE_TLS = True  # Использовать TLS для защищенного соединения
+EMAIL_HOST = 'smtp.gmail.com'  # Адрес SMTP сервера Gmail
+EMAIL_PORT = 587  # Порт для подключения к SMTP серверу Gmail
+EMAIL_HOST_USER = 'bullabratan@gmail.com'
+EMAIL_HOST_PASSWORD = 'spoc twnz dgex hjxr'

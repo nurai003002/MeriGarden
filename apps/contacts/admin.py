@@ -9,15 +9,6 @@ class ContactsFilterAdmin(admin.ModelAdmin):
     search_fields = ('name', 'number')
 
 
-class SettingsPhoneInline(admin.TabularInline):
-    model = models.SettingsPhone
-    extra = 1
-
-class SettingsFilterAdmin(admin.ModelAdmin):
-    list_filter = ('title', )
-    list_display = ('title', 'descriptions')
-    search_fields = ('title', 'descriptions')
-    inlines = [SettingsPhoneInline]
 
 class PageContactsFilterAdmin(admin.ModelAdmin):
     list_filter = ('name', )

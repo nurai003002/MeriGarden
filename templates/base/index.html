@@ -63,11 +63,12 @@
                         </div>
                     </div>
                 </div>
-                {% for condiction in condiction.condition_inline.all %}
                 <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp">
-                    <img src="{{condiction.image.url}}" alt="" class="mt-90 mb-30 br-20">
+                    <img src="{{condiction.image1.url}}" alt="" class="mt-90 mb-30 br-20">
                 </div>
-                {% endfor %}
+                <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp">
+                    <img src="{{condiction.image2.url}}" alt="" class="br-20">
+                </div>
                 
             </div>
         </div>
@@ -136,18 +137,7 @@
                     <div class="section-title">Услуги</div>
                 </div>
             </div>
-            <div class="row">
-                {% for usluga in usluga%}
-                <div class="col-md-4">
-                    <div class="single-facility animate-box br-20" data-animate-effect="fadeInUp">
-                        <span class="flaticon-world"></span>
-                        <h5>{{usluga.name}}</h5>
-                        <p>{{usluga.descriptions|safe}}</p>
-                        <div class="facility-shape"> <span class="flaticon-world"></span> </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
+            
         </div>
     </section>
     <!-- Services -->

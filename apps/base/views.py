@@ -5,60 +5,8 @@ from apps.secondary.models import Condition, News, Usluga,Team,Boss,TeamAbout, L
 from apps.contacts.models import Contacts,PageContact
 from django.core.mail import send_mail
 from apps.telegram_bot.views import get_text
-from django.core.paginator import Paginator, EmptyPage,PageNotAnInteger
-from django.views.generic import ListView, DetailView
-
-# Create your views here.
-class BlogListView(ListView):
-    model = models.Blog
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        context['object_list']=models.Blog.objects.all()
-        paginator = Paginator(context['object_list'], 3)
-        page = self.request.GET.get('page')
-        try:
-            context['object_list'] = paginator.page(page)
-        except PageNotAnInteger:
-            context['object_list']= paginator.page(1)
-        except EmptyPage:
-            context['object_list']=paginator.page(paginator.num_pages)
-        
-        context['other_blog_posts'] = models.Blog.objects.all()
-        paginator = Paginator(context['other_blog_posts'], 2)
-        page = self.request.GET.get('other-page')
-        try:
-            context['other_blog_posts'] = paginator.page(page)
-        except PageNotAnInteger:
-            context['other_blog_posts']= paginator.page(1)
-        except EmptyPage:
-            context['other_blog_posts']=paginator.page(paginator.num_pages)
-
-        return context
-        
-
-
-class BlogDetailView(DetailView):
-    model = models.Blog
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['other_blog_posts'] = models.Blog.objects.all()
-        paginator = Paginator(context['other_blog_posts'], 3)
-        page = self.request.GET.get('other-page')
-        try:
-            context['other_blog_posts'] = paginator.page(page)
-        except PageNotAnInteger:
-            context['other_blog_posts']= paginator.page(1)
-        except EmptyPage:
-            context['other_blog_posts']=paginator.page(paginator.num_pages)
-
-        return context
-
-
-
-
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+ 
 def index(request):
     video = models.Video.objects.latest('id')
     settings = models.Settings.objects.latest('id')
@@ -175,10 +123,19 @@ def list_price(request):
     return render(request, 'list.html', locals())
 
 def news(request):
-    news = News.objects.all()
     settings = models.Settings.objects.latest('id')
+    all_news = News.objects.all()
 
+    paginator = Paginator(all_news, 3)  
+    page = request.GET.get('page')
 
+    try:
+        news = paginator.page(page)
+    except PageNotAnInteger:
+        news = paginator.page(1)
+    except EmptyPage:
+       
+        news = paginator.page(paginator.num_pages)  
     if request.method=="POST":
             name = request.POST.get('name')
             number = request.POST.get('number')

@@ -39,14 +39,6 @@ class Settings(models.Model):
         verbose_name_plural = 'Основные настройки'
 
 
-class SettingsPhone(models.Model):
-    settings = models.ForeignKey(Settings, related_name='phone_title' , on_delete=models.CASCADE)
-    phone = models.CharField(
-        max_length = 255,
-        verbose_name = 'Телефонный номер'
-    )
-    class Meta:
-        unique_together = ('settings', 'phone')
 
 class Slide(models.Model):
     image = ResizedImageField(
@@ -93,16 +85,5 @@ class Video(models.Model):
         verbose_name_plural = "Видео о MerriGarden"
 
 
-class Blog(models.Model):
-    title = models.CharField(
-        max_length = 255,
-        verbose_name = 'Название '
-    )
-    descriptions = models.TextField(
-        verbose_name = 'Описание'
-    )
-    
-    class Meta:
-        verbose_name = 'Блок'
-        verbose_name_plural = "Блоки"
+
             

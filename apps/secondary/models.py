@@ -17,20 +17,19 @@ class Condition(models.Model):
     descriptions = RichTextField(
         verbose_name = "Описание"
     )
+    image1 = models.ImageField(
+        upload_to='image1/',
+        verbose_name='Фотографии'
+    )
+    image2 = models.ImageField(
+        upload_to='image2/',
+        verbose_name='Фотографии'
+    )
     class Meta:
         verbose_name = 'Условие '
         verbose_name_plural = 'Условия'
 
-    
-class ConditionInlineInfo(models.Model):
-    place_info = models.ForeignKey(Condition,related_name = "condition_inline", on_delete  = models.CASCADE )
-    image = models.ImageField(
-        upload_to='image/',
-        verbose_name='Фотографии'
-    )
-    class Meta:
-        unique_together = ('place_info', 'image')
-       
+
 
 
 class News(models.Model):

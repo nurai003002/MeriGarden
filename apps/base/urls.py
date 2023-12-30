@@ -13,9 +13,6 @@ urlpatterns = [
     path('list_price/', views.list_price, name='list_price'),
     path('news/', views.news, name = 'news'),
     path('contact/', views.contact, name='contact'),
-    path('blog_news/<int:id>/', views.blog_news, name='blog_news')
-    # path('blog/', include({
-    #     path('', BlogListView.as_view(), name = 'blog-list'),
-    #     path('<int:pk>/', BlogDetailView.as_view(), name='blog-detail')
-    # })),
+    path('blog_news/<int:id>/', views.blog_news, name='blog_news'),
+   
 ]

@@ -187,7 +187,6 @@ def contact(request):
                 "noreply@somehost.local",
                 [email])
             return redirect('index')
-
             
     return render(request, 'contact.html', locals())
 
